@@ -82,6 +82,27 @@ describe("Autocomplete", () => {
       expect(items[0].textContent.includes(data[0].code)).toBeTruthy();
       expect(items[1].textContent.includes(data[1].code)).toBeTruthy();
     });
+
+    it("Should filter the list when typing in the input", async () => {
+      // Arrange
+      const expectedCode = data[0].code; // brazil item
+
+      // Act
+      rendered = render(<Autocomplete data={data} />);
+      const input = rendered.queryByTestId(INPUT_TEST_ID);
+      if (!input) throw new Error("Input not found");
+
+      fireEvent.change(input, { target: { value: "Bra" } });
+      let items = await rendered.findAllByTestId(DROPDOWN_ITEMS_TEST_ID);
+      expect(items).toHaveLength(1);
+      expect(items[0].textContent).toContain(expectedCode);
+
+      //  Assert
+      fireEvent.change(input, { target: { value: "USD" } });
+      items = await rendered.findAllByTestId(DROPDOWN_ITEMS_TEST_ID);
+      expect(items).toHaveLength(1);
+      expect(items[0].textContent).toContain("USD");
+    });
   });
 
   describe("handleSelect", () => {
@@ -124,6 +145,29 @@ describe("Autocomplete", () => {
 
       expect(dropdown).not.toBeInTheDocument();
       expect(input).toHaveValue(inputValue);
+    });
+
+    it("Should clear the selected code and reopen dropdown when Backspace is pressed after selection", async () => {
+      // Arrange
+      const handleSelectFn = jest.fn();
+      rendered = render(
+        <Autocomplete data={data} handleSelect={handleSelectFn} />
+      );
+      const input = rendered.queryByTestId(INPUT_TEST_ID);
+      if (!input) throw new Error("Input not found");
+
+      fireEvent.focus(input);
+      const dropdownItem = (
+        await rendered.findAllByTestId(DROPDOWN_ITEMS_TEST_ID)
+      )[0];
+
+      fireEvent.click(dropdownItem);
+      fireEvent.keyDown(input, { key: "Backspace", code: "Backspace" });
+
+      // Assert
+      expect(input).toHaveValue("");
+      expect(handleSelectFn).toHaveBeenCalledWith("");
+      expect(rendered.queryByTestId(DROPDOWN_TEST_ID)).toBeInTheDocument();
     });
   });
 
