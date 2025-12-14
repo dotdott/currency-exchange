@@ -4,7 +4,7 @@ import "./styles.scss";
 
 export interface CurrencyInputProps extends Omit<
   ComponentProps<"input">,
-  "onChange"
+  "onChange" | "type"
 > {
   value?: string;
   onChange?(value: string, event: OnChangeEventType): void;
