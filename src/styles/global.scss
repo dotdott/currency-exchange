@@ -1,0 +1,60 @@
+@import "../styles/colors.scss";
+
+* {
+  font-family:
+    sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue",
+    Arial;
+
+  p,
+  span,
+  input {
+    font-size: 14px;
+  }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: $text;
+}
+
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+
+  background-image: url("../assets/white-noise-bg.png");
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+}
+
+button {
+  background-color: $primary;
+  color: $white;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  padding: 16px;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    &:not(:disabled) {
+      background-color: rgba($primary, 0.9);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

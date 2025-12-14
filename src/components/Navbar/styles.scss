@@ -1,0 +1,71 @@
+@import "../../styles/colors.scss";
+
+@media screen and (max-width: 601px) {
+  .navbar.navbar {
+    .navbar__logo {
+      margin-left: 0;
+
+      img {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    .navbar__logo,
+    .navbar__logo span {
+      font-size: 20px;
+    }
+
+    nav {
+      margin-left: 14px;
+
+      a {
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.navbar {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  background: $whiteSmoke;
+  padding: 16px;
+
+  &__logo {
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-family: "Amarna", sans-serif;
+
+    span {
+      display: flex;
+      align-items: center;
+      font-size: 28px;
+      color: $primary;
+      font-family: "Amarna", sans-serif;
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: 32px;
+    margin-left: 32px;
+
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      color: $black;
+
+      &.active,
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}

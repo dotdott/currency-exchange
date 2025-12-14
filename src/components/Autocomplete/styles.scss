@@ -1,0 +1,50 @@
+@import "../../styles/colors.scss";
+
+.autocomplete {
+  position: relative;
+
+  > input {
+    width: 100%;
+    border: 1px solid $borderColor;
+    height: 40px;
+    border-radius: 6px;
+    padding: 8px;
+
+    background-color: $white;
+    color: $offBlack;
+
+    outline: none;
+    font-size: 14px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: 0px 0px 3px -1px $offBlack;
+    }
+  }
+
+  &__dropdown-items {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border-top: none;
+    overflow-y: scroll;
+    scrollbar-color: $primary $white;
+
+    border: 1px solid $borderColor;
+    border-radius: 4px;
+    max-height: 120px;
+    width: 100%;
+    z-index: 2;
+
+    > span {
+      background-color: #fff;
+      padding: 6px;
+
+      &:hover {
+        background-color: $whiteSmoke;
+        cursor: pointer;
+      }
+    }
+  }
+}

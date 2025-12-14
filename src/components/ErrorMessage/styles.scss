@@ -1,0 +1,26 @@
+@import "../../styles/colors.scss";
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  background-color: $warningLight;
+  color: $offBlack;
+  font-weight: 500;
+  margin-top: 16px;
+  padding: 16px;
+
+  border-radius: 6px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    span {
+      font-size: 18px;
+    }
+  }
+}

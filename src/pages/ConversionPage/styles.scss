@@ -1,0 +1,130 @@
+@import "../../styles/colors.scss";
+
+$wrapper-width: (
+  "1678px": 60%,
+  "1441px": 70%,
+  "1281px": 80%,
+  "1024px": 90%,
+  "769px": 100%,
+);
+
+@each $maxWidth, $width in $wrapper-width {
+  @media screen and (max-width: $maxWidth) {
+    .conversion-container .wrapper.wrapper {
+      width: $width;
+
+      @if $maxWidth == "769px" {
+        padding: 3rem 1rem;
+        margin: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 601px) {
+  .conversion-container .wrapper {
+    .currency-form {
+      gap: 16px;
+    }
+
+    .currency-input > input,
+    .datetime-input > input {
+      width: 100%;
+    }
+
+    .convertors {
+      flex-direction: column;
+
+      .convertors__wrapper {
+        width: 100%;
+      }
+    }
+
+    .exchange-currency.exchange-currency {
+      margin: 0 auto;
+      transform: rotate(90deg);
+      margin-top: 0;
+    }
+  }
+}
+
+@media screen and (max-height: 786px) and (max-width: 601px) {
+  .conversion-container.conversion-container {
+    height: fit-content;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .conversion-container.conversion-container {
+    height: fit-content;
+
+    .wrapper {
+      margin: 1rem;
+    }
+  }
+}
+
+.conversion-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  label {
+    font-weight: bold;
+    color: $offBlack;
+  }
+
+  .currency-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrapper {
+    min-width: 50%;
+    border-radius: 1rem;
+    padding: 3rem;
+
+    background-color: rgba($whiteSmoke, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 5px -1px $disabledColor;
+
+    .exchange-currency {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+
+      margin-top: 10px;
+      padding: 0;
+
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      color: $offBlack;
+    }
+
+    h2 {
+      font-weight: 400;
+    }
+
+    .convertors {
+      display: flex;
+      align-items: end;
+      gap: 16px;
+
+      &__wrapper {
+        width: 45.5%;
+      }
+    }
+
+    .date-input {
+      margin: 16px 0;
+    }
+  }
+}

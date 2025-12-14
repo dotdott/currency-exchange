@@ -1,0 +1,11 @@
+.result {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 16px;
+
+  .exchange {
+    display: flex;
+    flex-direction: column;
+  }
+}
