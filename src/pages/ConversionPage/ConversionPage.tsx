@@ -120,7 +120,6 @@ const ConversionPage = () => {
             id="from"
             label="FROM"
             prefix={fromSymbolPrefix}
-            value={currencyAmount}
             onChange={handleCurrencyAmountChange}
           />
 
